@@ -10,8 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <opencv2/opencv.hpp>
 
-#include "tensorflow/contrib/lite/kernels/register.h"
-#include "tensorflow/contrib/lite/model.h"
+#include "tensorflow/lite/kernels/register.h"
+#include "tensorflow/lite/model.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

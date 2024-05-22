@@ -66,10 +66,13 @@
     self.recView.frame = CGRectMake(0.0, topPadding, imageViewWidth, imageViewWidth*HW_RATIO);
     self.heatmapView.frame = CGRectMake(imageViewWidth+20, topPadding, imageViewWidth, imageViewWidth*HW_RATIO);
     
+    UIImage *_image = [UIImage imageNamed:@"IMG_3213.jpg"];
+    cv::Mat outMat = [OpenCVUtil cvMatFromUIImage:_image];
+    [self processImage:outMat];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self startCapture];
+//    [self startCapture];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -86,7 +89,6 @@
 }
 
 - (IBAction)rectifyReceipt:(id)sender {
-    
     cv::Mat outputMat;
     [self.helper rectifyReceipt:outputMat];
     UIImage *image = [OpenCVUtil UIImageFromCVMat:outputMat];
@@ -145,6 +147,8 @@
     cv::Mat float_rgbImage;
     rgb_image.convertTo(float_rgbImage, CV_32FC3);
     LOG_CV_MAT_TYPE(float_rgbImage);
+    
+    UIImage *_img = [OpenCVUtil UIImageFromCVMat:float_rgbImage];
     
     NSTimeInterval startTime = [[NSDate date] timeIntervalSince1970];
     

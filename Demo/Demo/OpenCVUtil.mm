@@ -22,7 +22,7 @@
     CGImageAlphaInfo alphaInfo = (cvMat.elemSize() == 4) ? kCGImageAlphaNoneSkipLast : kCGImageAlphaNone;
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
     
-    CG_AVAILABLE_STARTING(10.0, 2.0);
+    // CG_AVAILABLE_STARTING(10.0, 2.0);
     CGImageRef imageRef = CGImageCreate(cvMat.cols,                                 //width
                                         cvMat.rows,                                 //height
                                         8,                                          //bits per component

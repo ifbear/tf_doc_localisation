@@ -1,6 +1,13 @@
-platform :ios, '10.0'
+platform :ios, '13.0'
 inhibit_all_warnings!
 
-target 'Demo'
-       pod 'TensorFlowLite', '1.10.1'
-       pod 'OpenCV', '2.4.11'
+target 'Demo' do
+  pod 'TensorFlowLite', '1.13.1' # '~> 1.0' #'1.10.1'
+  pod 'OpenCV', '2.4.13.6' #'2.4.11'
+  
+  post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
+  end
+end

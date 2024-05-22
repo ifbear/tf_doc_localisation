@@ -15,8 +15,8 @@
 // this package includes the definition of "float32_t"
 #import <AVFoundation/AVFoundation.h>
 
-#include "tensorflow/contrib/lite/string_util.h"
-#include "tensorflow/contrib/lite/op_resolver.h"
+#include "tensorflow/lite/string_util.h"
+#include "tensorflow/lite/op_resolver.h"
 
 #include <iostream>
 
@@ -43,7 +43,7 @@ static const int wanted_input_channels = 3;
 static const int rec_min_width = 50;
 static const int rec_min_height = 100;
 
-static float32_t X[25][19] = {
+static float_t X[25][19] = {
     {-0.947368,-0.842105,-0.736842,-0.631579,-0.526316,-0.421053,-0.315789,-0.210526,-0.105263,0,0.105263,0.210526,0.315789,0.421053,0.526316,0.631579,0.736842,0.842105,0.947368},
     {-0.947368,-0.842105,-0.736842,-0.631579,-0.526316,-0.421053,-0.315789,-0.210526,-0.105263,0,0.105263,0.210526,0.315789,0.421053,0.526316,0.631579,0.736842,0.842105,0.947368},
     {-0.947368,-0.842105,-0.736842,-0.631579,-0.526316,-0.421053,-0.315789,-0.210526,-0.105263,0,0.105263,0.210526,0.315789,0.421053,0.526316,0.631579,0.736842,0.842105,0.947368},
@@ -71,7 +71,7 @@ static float32_t X[25][19] = {
     {-0.947368,-0.842105,-0.736842,-0.631579,-0.526316,-0.421053,-0.315789,-0.210526,-0.105263,0,0.105263,0.210526,0.315789,0.421053,0.526316,0.631579,0.736842,0.842105,0.947368}
 };
 
-static float32_t Y[25][19] = {
+static float_t Y[25][19] = {
     {-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96,-0.96},
     {-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88,-0.88},
     {-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8,-0.8},
@@ -145,9 +145,9 @@ static NSString* FilePathForResourceName(NSString* name, NSString* extension) {
     LOG(INFO) << "Everything works well!" <<std::endl;
 }
 
-void dsnt(int height, int width, float32_t *heatmaps, int *X_coords, int *Y_coords) {
+void dsnt(int height, int width, float_t *heatmaps, int *X_coords, int *Y_coords) {
     // 1. norm the heatmaps.
-    float32_t exp_sum[] = {0,0,0,0};
+    float_t exp_sum[] = {0,0,0,0};
     int dim = 4;
     for (int h=0; h<height; h++) {
         auto a_row = heatmaps + h * dim * width;
@@ -176,8 +176,8 @@ void dsnt(int height, int width, float32_t *heatmaps, int *X_coords, int *Y_coor
     }
     
     // 2. coordinate transform
-    float32_t x_coords[] = {0,0,0,0};
-    float32_t y_coords[] = {0,0,0,0};
+    float_t x_coords[] = {0,0,0,0};
+    float_t y_coords[] = {0,0,0,0};
     
     for (int h=0; h<height; h++) {
         auto X_row = X[h];
@@ -314,10 +314,10 @@ bool validate_coords(int *Xs, int *Ys) {
     self.current_image = input_rgb;
     
     auto network_input = interpreter->inputs()[0];
-    float32_t *network_input_ptr = interpreter->typed_tensor<float32_t>(network_input);
+    float_t *network_input_ptr = interpreter->typed_tensor<float_t>(network_input);
     const float *source_data = (float*) inputImage.data;
     
-    std::memcpy(network_input_ptr, source_data, wanted_input_width*wanted_input_height*wanted_input_channels*sizeof(float32_t));
+    std::memcpy(network_input_ptr, source_data, wanted_input_width*wanted_input_height*wanted_input_channels*sizeof(float_t));
     
     /*
      *  float list -> cv::Mat
@@ -334,7 +334,7 @@ bool validate_coords(int *Xs, int *Ys) {
         LOG(FATAL) << "Failed to invoke!";
     }
     
-    float32_t* network_output = interpreter->typed_output_tensor<float32_t>(0);
+    float_t* network_output = interpreter->typed_output_tensor<float_t>(0);
     
     auto output_h = 25;
     auto output_w = 19;
@@ -342,9 +342,9 @@ bool validate_coords(int *Xs, int *Ys) {
     
     int X_coords[4];
     int Y_coords[4];
-    float32_t heatmaps[output_w*output_h*output_dim];
+    float_t heatmaps[output_w*output_h*output_dim];
     
-    std::memcpy(heatmaps, network_output, output_h*output_w*output_dim*sizeof(float32_t));
+    std::memcpy(heatmaps, network_output, output_h*output_w*output_dim*sizeof(float_t));
     
     dsnt(output_h, output_w, heatmaps, X_coords, Y_coords);
     

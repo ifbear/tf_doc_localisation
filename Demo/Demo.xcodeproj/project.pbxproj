@@ -20,6 +20,7 @@
 		61233B012201B355002068C1 /* TFHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61233B002201B355002068C1 /* TFHelper.mm */; };
 		61233B07220219D8002068C1 /* OpenCVUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61233B05220219D6002068C1 /* OpenCVUtil.mm */; };
 		61233B092202DC14002068C1 /* frozen_model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 61233B082202DC14002068C1 /* frozen_model.tflite */; };
+		A04C7A7E2BF76A84000F6BE0 /* IMG_3213.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A04C7A7D2BF76A84000F6BE0 /* IMG_3213.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		61233B06220219D8002068C1 /* OpenCVUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCVUtil.h; sourceTree = "<group>"; };
 		61233B082202DC14002068C1 /* frozen_model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_model.tflite; sourceTree = "<group>"; };
 		9E485389294399BF772A0F29 /* libPods-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04C7A7D2BF76A84000F6BE0 /* IMG_3213.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3213.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				61233B002201B355002068C1 /* TFHelper.mm */,
 				61233AD322017289002068C1 /* ViewController.h */,
 				61233AD422017289002068C1 /* ViewController.mm */,
+				A04C7A7D2BF76A84000F6BE0 /* IMG_3213.jpg */,
 				61233B06220219D8002068C1 /* OpenCVUtil.h */,
 				61233B05220219D6002068C1 /* OpenCVUtil.mm */,
 				61233AD622017289002068C1 /* Main.storyboard */,
@@ -186,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A04C7A7E2BF76A84000F6BE0 /* IMG_3213.jpg in Resources */,
 				61233ADD2201728A002068C1 /* LaunchScreen.storyboard in Resources */,
 				61233B092202DC14002068C1 /* frozen_model.tflite in Resources */,
 				61233ADA2201728A002068C1 /* Assets.xcassets in Resources */,
@@ -292,6 +296,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -306,11 +311,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -359,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -373,18 +379,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K7827895F2;
+				DEVELOPMENT_TEAM = ZKKYQHSX4D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = meo.meo.Demo.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo666666;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -396,18 +402,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K7827895F2;
+				DEVELOPMENT_TEAM = ZKKYQHSX4D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = meo.meo.Demo.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo666666;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
